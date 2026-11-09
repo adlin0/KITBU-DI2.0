@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KIT BUDI - Rak Buku</title>
+
+    <style>
+        .rakbuku-page {
+            min-height: 100vh;
+            padding: 25px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .rakbuku-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .rakbuku-logo {
+            width: 110px;
+            height: auto;
+        }
+
+        .rakbuku-content {
+            max-width: 1000px;
+            margin: 55px auto 30px;
+        }
+
+        .rakbuku-content h1 {
+            color: #263b70;
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .rakbuku-content .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .level-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .level-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 22px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.10);
+            transition: 0.3s;
+        }
+
+        .level-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 9px 25px rgba(0,0,0,0.15);
+        }
+
+        .level-icon {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        .level-card h2 {
+            color: #263b70;
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .level-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 45px;
+        }
+
+        .level-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .rendah-button {
+            background: #e69b38;
+        }
+
+        .sederhana-button {
+            background: #405caa;
+        }
+
+        .extra-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 45px;
+        }
+
+        .extra-button {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .score-button {
+            background: #36a653;
+        }
+
+        .feedback-button {
+            background: #d56b91;
+        }
+
+        .home-button {
+            background: #e49b35;
+            padding: 12px 23px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .level-button:hover,
+        .extra-button:hover,
+        .home-button:hover {
+            opacity: 0.85;
+            transform: scale(1.03);
+        }
+
+        @media (max-width: 650px) {
+            .rakbuku-page {
+                padding: 15px;
+            }
+
+            .rakbuku-content {
+                margin-top: 40px;
+            }
+
+            .rakbuku-content h1 {
+                font-size: 27px;
+            }
+
+            .level-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .level-card {
+                padding: 28px 18px;
+            }
+
+            .extra-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .extra-button {
+                width: 85%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="rakbuku-page">
+
+        <!-- HEADER -->
+        <header class="rakbuku-header">
+
+            <img
+                src="assets/images/logo-kit-budi.jpg"
+                alt="Logo KIT BUDI"
+                class="rakbuku-logo"
+            >
+
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
+
+                <button
+                    class="home-button"
+                    type="button"
+                    onclick="window.location.href='index.html'">
+                    🏠 HALAMAN UTAMA
+                </button>
+
+                <button
+                    id="musicButton"
+                    class="music-button"
+                    type="button">
+                    🔇 MUZIK OFF
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- TAJUK RAK BUKU -->
+        <section class="rakbuku-content">
+
+            <h1>📚 RAK BUKU KIT BUDI</h1>
+
+            <p class="subtitle">
+                Pilih tahap pembelajaran anda untuk memulakan pengembaraan!
+            </p>
+
+
+            <!-- PILIHAN TAHAP -->
+            <div class="level-container">
+
+                <!-- TAHAP RENDAH -->
+                <div class="level-card">
+
+                    <div class="level-icon">🌱</div>
+
+                    <h2>TAHAP RENDAH</h2>
+
+                    <p>
+                        Pengembaraan cerita rakyat dengan bahan
+                        pembelajaran yang sesuai untuk tahap rendah.
+                    </p>
+
+                    <button
+                        class="level-button rendah-button"
+                        type="button"
+                        onclick="selectLevel('rendah')">
+                        PILIH TAHAP RENDAH
+                    </button>
+
+                </div>
+
+
+                <!-- TAHAP SEDERHANA -->
+                <div class="level-card">
+
+                    <div class="level-icon">🌳</div>
+
+                    <h2>TAHAP SEDERHANA</h2>
+
+                    <p>
+                        Terokai lima cerita rakyat dan pelbagai
+                        aktiviti permainan interaktif.
+                    </p>
+
+                    <button
+                        class="level-button sederhana-button"
+                        type="button"
+                        onclick="selectLevel('sederhana')">
+                        PILIH TAHAP SEDERHANA
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- CEK SKOR DAN MAKLUM BALAS -->
+            <div class="extra-buttons">
+
+                <a
+                    id="scoreLink"
+                    class="extra-button score-button"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    🏆 CEK SKOR
+                </a>
+
+                <a
+                    id="feedbackLink"
+                    class="extra-button feedback-button"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    💬 MAKLUM BALAS
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MUZIK -->
+    <audio
+        id="backgroundMusic"
+        src="assets/audio/lagu-kit-budi.mp3"
+        loop>
+    </audio>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="js/data.js"></script>
+
+    <script>
+
+        const music = document.getElementById("backgroundMusic");
+        const musicButton = document.getElementById("musicButton");
+
+        // Pautan Apps Script asal
+        document.getElementById("scoreLink").href = appLinks.score;
+        document.getElementById("feedbackLink").href = appLinks.feedback;
+
+        // Simpan tahap yang dipilih
+        function selectLevel(level) {
+
+            sessionStorage.setItem("selectedLevel", level);
+
+            window.location.href = "intro.html";
+
+        }
+
+        // Tetapan muzik
+        music.loop = true;
+
+        let musicPlaying = false;
+
+        musicButton.addEventListener("click", async function () {
+
+            if (!musicPlaying) {
+
+                try {
+
+                    await music.play();
+
+                    musicPlaying = true;
+
+                    musicButton.textContent = "🔊 MUZIK ON";
+
+                } catch (error) {
+
+                    alert("Muzik tidak dapat dimainkan. Sila cuba lagi.");
+
+                }
+
+            } else {
+
+                music.pause();
+
+                musicPlaying = false;
+
+                musicButton.textContent = "🔇 MUZIK OFF";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KIT BUDI - Video Pengenalan</title>
+
+    <style>
+        .intro-page {
+            min-height: 100vh;
+            padding: 25px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .intro-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .intro-logo {
+            width: 110px;
+        }
+
+        .intro-content {
+            max-width: 950px;
+            margin: 35px auto;
+        }
+
+        .intro-content h1 {
+            color: #263b70;
+            font-size: 32px;
+        }
+
+        .intro-description {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .video-container {
+            width: 100%;
+            background: #222;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .intro-video {
+            display: block;
+            width: 100%;
+            max-height: 550px;
+            object-fit: contain;
+        }
+
+        .intro-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .intro-button {
+            padding: 13px 25px;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .home-button {
+            background: #e49b35;
+        }
+
+        .back-button {
+            background: #777;
+        }
+
+        .next-button {
+            background: #36a653;
+        }
+
+        .intro-button:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .intro-page {
+                padding: 15px;
+            }
+
+            .intro-content h1 {
+                font-size: 25px;
+            }
+
+            .intro-video {
+                max-height: 350px;
+            }
+
+            .intro-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .intro-button {
+                width: 85%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="intro-page">
+
+        <header class="intro-header">
+
+            <img
+                src="assets/images/logo-kit-budi.jpg"
+                alt="Logo KIT BUDI"
+                class="intro-logo"
+            >
+
+        </header>
+
+        <section class="intro-content">
+
+            <h1 id="levelTitle">VIDEO PENGENALAN</h1>
+
+            <p class="intro-description" id="levelDescription">
+                Tonton video pengenalan sebelum meneruskan pengembaraan.
+            </p>
+
+            <div class="video-container">
+
+                <video
+                    id="introVideo"
+                    class="intro-video"
+                    controls
+                    playsinline>
+                    Browser anda tidak menyokong video.
+                </video>
+
+            </div>
+
+            <div class="intro-buttons">
+
+                <button
+                    class="intro-button home-button"
+                    onclick="window.location.href='index.html'">
+                    🏠 HALAMAN UTAMA
+                </button>
+
+                <button
+                    class="intro-button back-button"
+                    onclick="window.location.href='rakbuku.html'">
+                    ↩ KEMBALI KE RAK BUKU
+                </button>
+
+                <button
+                    class="intro-button next-button"
+                    onclick="goToBooks()">
+                    ➡️ TERUSKAN KE PILIH BUKU
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        const selectedLevel = sessionStorage.getItem("selectedLevel");
+
+        const video = document.getElementById("introVideo");
+        const title = document.getElementById("levelTitle");
+        const description = document.getElementById("levelDescription");
+
+        if (selectedLevel === "rendah") {
+
+            title.textContent = "🌱 VIDEO PENGENALAN - TAHAP RENDAH";
+
+            description.textContent =
+                "Tonton video pengenalan Tahap Rendah sebelum memilih buku cerita.";
+
+            video.src = "assets/videos/introRENDAH.MP4";
+
+        } else if (selectedLevel === "sederhana") {
+
+            title.textContent = "🌳 VIDEO PENGENALAN - TAHAP SEDERHANA";
+
+            description.textContent =
+                "Tonton video pengenalan Tahap Sederhana sebelum memilih buku cerita.";
+
+            video.src = "assets/videos/intro.MP4";
+
+        } else {
+
+            title.textContent = "TAHAP BELUM DIPILIH";
+
+            description.textContent =
+                "Sila kembali ke Rak Buku dan pilih tahap pembelajaran.";
+
+            video.style.display = "none";
+
+        }
+
+        function goToBooks() {
+
+            if (!selectedLevel) {
+                alert("Sila pilih tahap pembelajaran terlebih dahulu.");
+                window.location.href = "rakbuku.html";
+                return;
+            }
+
+            window.location.href = "pilihbuku.html";
+
+        }
+
+    </script>
+
+</body>
+</html>

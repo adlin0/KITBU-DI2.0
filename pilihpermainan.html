@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Permainan - Kit Budi</title>
+    <script src="js/data.js"></script>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 25px 20px 50px;
+            font-family: Arial, sans-serif;
+            background: #fff;
+            color: #263f78;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .logo { width: 85px; height: auto; }
+
+        button, a {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .home-btn, .music-btn, .PERMAINAN-btn, .back-btn {
+            border: none;
+            border-radius: 25px;
+            padding: 11px 18px;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .home-btn { background: #ed9c2f; }
+        .music-btn { background: #4260b0; }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            margin: 0 0 8px;
+            font-size: 28px;
+        }
+
+        .heading p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .PERMAINAN-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 22px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .PERMAINAN-card {
+            width: 280px;
+            min-height: 370px;
+            padding: 20px;
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 5px 18px rgba(0,0,0,.10);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform .2s;
+        }
+
+        .PERMAINAN-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .PERMAINAN-image {
+            width: 100%;
+            height: 190px;
+            object-fit: contain;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            background: #f5f7fc;
+        }
+
+        .PERMAINAN-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            background: linear-gradient(145deg, #dce9ff, #b8d4ff);
+            margin: 25px auto 18px;
+        }
+
+        .PERMAINAN-card h2 {
+            font-size: 18px;
+            line-height: 1.4;
+            min-height: 55px;
+            margin: 0 0 20px;
+        }
+
+        .PERMAINAN-btn {
+            background: #4260b0;
+            padding: 12px 25px;
+            margin-top: 10px;
+        }
+
+        .PERMAINAN-btn:hover { background: #263f78; }
+
+        .back-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+
+        .back-btn {
+            background: #777;
+            display: inline-block;
+        }
+
+        .message {
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 600px) {
+            .PERMAINAN-card { width: min(100%, 320px); }
+            .heading h1 { font-size: 23px; }
+            .top-bar { flex-wrap: wrap; gap: 10px; }
+        }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="activity-selection-page">
+
+    <div class="top-bar">
+        <img src="assets/images/logo-kit-budi.jpg"
+             class="logo" alt="Logo Kit Budi">
+
+        <div>
+            <button class="music-btn" id="musicButton">🔇 MUZIK OFF</button>
+            <button class="home-btn"
+                    onclick="window.location.href='index.html'">
+                🏠 HALAMAN UTAMA
+            </button>
+        </div>
+    </div>
+
+    <div class="heading">
+        <h1>🎮 PILIH PERMAINAN</h1>
+        <p id="bookDescription">Pilih satu permainan untuk dimainkan.</p>
+    </div>
+
+    <div class="PERMAINAN-container" id="PERMAINANContainer"></div>
+
+    <div class="back-container">
+        <a href="pilihbuku.html" class="back-btn">↩ PILIH BUKU</a>
+        <a href="rakbuku.html" class="back-btn">📚 RAK BUKU</a>
+    </div>
+
+    <audio id="backgroundMusic"
+           src="assets/audio/lagu-kit-budi.mp3"
+           loop></audio>
+
+    <script>
+        const selectedLevel = sessionStorage.getItem("selectedLevel");
+        const selectedBookId = sessionStorage.getItem("selectedBookId");
+
+        const PERMAINANContainer = document.getElementById("PERMAINANContainer");
+        const bookDescription = document.getElementById("bookDescription");
+
+        const music = document.getElementById("backgroundMusic");
+        const musicButton = document.getElementById("musicButton");
+
+        // SISTEM MUZIK
+        music.loop = true;
+        let musicPlaying = false;
+
+        musicButton.addEventListener("click", async function () {
+            if (!musicPlaying) {
+                try {
+                    await music.play();
+                    musicPlaying = true;
+                    musicButton.textContent = "🔊 MUZIK ON";
+                } catch (error) {
+                    alert("Muzik tidak dapat dimainkan.");
+                }
+            } else {
+                music.pause();
+                musicPlaying = false;
+                musicButton.textContent = "🔇 MUZIK OFF";
+            }
+        });
+
+        // PILIH GAMBAR MENGIKUT TAJUK BUKU
+        function getImagePrefix(bookTitle) {
+            const title = bookTitle.toLowerCase();
+
+            if (title.includes("arnab")) {
+                return "gambar-arnab";
+            }
+
+            if (title.includes("kancil")) {
+                return "gambar-kancil";
+            }
+
+            if (title.includes("batu belah")) {
+                return "gambar-batu-belah";
+            }
+
+            if (title.includes("tanggang")) {
+                return "gambar-tanggang";
+            }
+
+            if (title.includes("bawang")) {
+                return "gambar-bawang";
+            }
+
+            return null;
+        }
+
+        // PAPARKAN TIGA PERMAINAN
+        if (!selectedLevel || !learningData[selectedLevel]) {
+
+            PERMAINANContainer.innerHTML =
+                '<p class="message">Sila pilih tahap pembelajaran dahulu.</p>';
+
+        } else {
+
+            const books = learningData[selectedLevel];
+
+            const selectedBook = books.find(function (book) {
+                return book.id === selectedBookId;
+            });
+
+            if (!selectedBook) {
+
+                PERMAINANContainer.innerHTML =
+                    '<p class="message">Buku tidak dijumpai. Sila pilih buku semula.</p>';
+
+            } else {
+
+                bookDescription.textContent =
+                    selectedBook.title + " - Pilih satu daripada 3 permainan.";
+
+                const imagePrefix = getImagePrefix(selectedBook.title);
+
+                selectedBook.PERMAINANs.forEach(function (PERMAINAN, index) {
+
+                    const card = document.createElement("div");
+                    card.className = "PERMAINAN-card";
+
+                    const imageNumber = index + 1;
+
+                    const imagePath = imagePrefix
+                        ? `assets/images/${imagePrefix}-${imageNumber}.jpg`
+                        : "";
+
+                    card.innerHTML = `
+                        <div>
+                            <img
+                                src="${imagePath}"
+                                class="PERMAINAN-image"
+                                alt="Gambar ${PERMAINAN.title}"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                            >
+
+                            <div class="PERMAINAN-icon" style="display:none;">
+                                🎮
+                            </div>
+
+                            <h2>${PERMAINAN.title}</h2>
+                        </div>
+
+                        <button class="PERMAINAN-btn">
+                            MAIN PERMAINAN ${index + 1}
+                        </button>
+                    `;
+
+                    // BUTANG MAIN PERMAINAN
+                    card.querySelector(".PERMAINAN-btn").addEventListener("click", function () {
+
+                        sessionStorage.setItem("selectedPERMAINANTitle", PERMAINAN.title);
+                        sessionStorage.setItem("selectedPERMAINANUrl", PERMAINAN.url);
+                        sessionStorage.setItem("selectedPERMAINANIndex", index);
+
+                        window.location.href = "mainpermainan.html";
+                    });
+
+                    PERMAINANContainer.appendChild(card);
+                });
+            }
+        }
+    </script>
+
+</body>
+</html>

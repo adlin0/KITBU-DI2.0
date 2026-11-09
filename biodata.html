@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIT BUDI - Biodata Pengembara</title>
+    <style>
+        .biodata-page {
+            min-height: 100vh;
+            padding: 25px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .biodata-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .biodata-logo {
+            width: 110px;
+            height: auto;
+        }
+
+        .biodata-card {
+            max-width: 650px;
+            margin: 65px auto 30px;
+            padding: 40px 25px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        .biodata-card h1 {
+            color: #263b70;
+            margin-bottom: 15px;
+        }
+
+        .biodata-card p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .biodata-link,
+        .home-button,
+        .next-button {
+            display: inline-block;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 8px;
+        }
+
+        .biodata-link {
+            background: #405caa;
+        }
+
+        .home-button {
+            background: #e49b35;
+        }
+
+        .next-button {
+            background: #36a653;
+        }
+
+        .biodata-link:hover {
+            background: #2d4382;
+        }
+
+        .home-button:hover {
+            background: #c77d1d;
+        }
+
+        .next-button:hover {
+            background: #25813d;
+        }
+
+        @media (max-width: 600px) {
+            .biodata-page {
+                padding: 15px;
+            }
+
+            .biodata-card {
+                margin-top: 45px;
+                padding: 30px 18px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="biodata-page">
+
+        <header class="biodata-header">
+
+            <img
+                src="assets/images/logo-kit-budi.jpg"
+                alt="Logo KIT BUDI"
+                class="biodata-logo"
+            >
+
+            <button
+                id="musicButton"
+                class="music-button"
+                type="button">
+                🔇 MUZIK OFF
+            </button>
+
+        </header>
+
+        <section class="biodata-card">
+
+            <h1>BIODATA PENGEMBARA</h1>
+
+            <p>
+                Selamat datang ke Pengembaraan Budi!
+                Anda boleh mengisi biodata sebelum meneruskan
+                pengembaraan cerita rakyat.
+            </p>
+
+            <a
+                id="biodataLink"
+                class="biodata-link"
+                target="_blank"
+                rel="noopener noreferrer">
+                📝 ISI BIODATA
+            </a>
+
+            <br>
+
+            <button
+                class="next-button"
+                type="button"
+                onclick="window.location.href='rakbuku.html'">
+                ➡️ TERUSKAN
+            </button>
+
+            <br>
+
+            <button
+                class="home-button"
+                type="button"
+                onclick="window.location.href='index.html'">
+                🏠 HALAMAN UTAMA
+            </button>
+
+        </section>
+
+    </main>
+
+    <audio
+        id="backgroundMusic"
+        src="assets/audio/lagu-kit-budi.mp3"
+        loop>
+    </audio>
+
+    <script src="js/data.js"></script>
+
+    <script>
+        const music = document.getElementById("backgroundMusic");
+        const musicButton = document.getElementById("musicButton");
+        const biodataLink = document.getElementById("biodataLink");
+
+        biodataLink.href = appLinks.biodata;
+
+        let musicPlaying = false;
+
+        musicButton.addEventListener("click", async function () {
+
+            if (!musicPlaying) {
+                try {
+                    await music.play();
+                    musicPlaying = true;
+                    musicButton.textContent = "🔊 MUZIK ON";
+                } catch (error) {
+                    alert("Muzik tidak dapat dimainkan. Sila cuba lagi.");
+                }
+            } else {
+                music.pause();
+                musicPlaying = false;
+                musicButton.textContent = "🔇 MUZIK OFF";
+            }
+
+        });
+    </script>
+
+</body>
+</html>

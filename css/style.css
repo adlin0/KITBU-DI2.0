@@ -1,0 +1,1171 @@
+
+/* =====================================================
+   KIT BUDI - FULLSCREEN RESPONSIVE STYLESHEET
+   ===================================================== */
+
+:root {
+    color-scheme: light;
+    --ink: #244b3e;
+    --muted: #61736b;
+    --forest: #34765f;
+    --forest-dark: #285d4b;
+    --leaf: #e6f0df;
+    --cream: #fffaf0;
+    --paper: #fffefa;
+    --coral: #e8785b;
+    --gold: #efbd5a;
+    --line: rgba(52, 118, 95, 0.15);
+    --shadow: 0 14px 34px rgba(49, 73, 58, 0.12);
+    --soft-shadow: 0 7px 20px rgba(49, 73, 58, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    color: var(--ink);
+    background:
+        radial-gradient(ellipse at 4% 5%, rgba(239, 189, 90, 0.14), transparent 25rem),
+        radial-gradient(ellipse at 96% 92%, rgba(104, 160, 117, 0.13), transparent 28rem),
+        var(--cream);
+    font-family: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+/* =====================================================
+   HEADER DAN LOGO
+   ===================================================== */
+
+.top-bar,
+.rakbuku-header,
+.intro-header,
+.biodata-header,
+body > header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    width: calc(100% - 64px);
+    max-width: 1800px;
+    min-height: 76px;
+    margin: 0 auto;
+    padding: 12px 0;
+    background: transparent;
+}
+
+.top-bar > div,
+.rakbuku-header > div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.logo,
+.rakbuku-logo,
+.intro-logo,
+.biodata-logo {
+    display: block;
+    width: 78px;
+    height: auto;
+    max-height: 64px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* =====================================================
+   BUTTON
+   ===================================================== */
+
+button,
+.music-button,
+.start-button,
+.home-btn,
+.music-btn,
+.home-button,
+.level-button,
+.extra-button,
+.intro-button,
+.biodata-link,
+.next-button,
+.select-btn,
+.back-btn,
+.PERM AINAN-btn,
+.home,
+.back,
+.next,
+.open-btn {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border: 0;
+    border-radius: 14px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+button:hover,
+.music-button:hover,
+.start-button:hover,
+.home-btn:hover,
+.music-btn:hover,
+.home-button:hover,
+.level-button:hover,
+.extra-button:hover,
+.intro-button:hover,
+.biodata-link:hover,
+.next-button:hover,
+.select-btn:hover,
+.back-btn:hover,
+.PERM AINAN-btn:hover,
+.home:hover,
+.back:hover,
+.next:hover,
+.open-btn:hover {
+    filter: brightness(1.04);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(36, 75, 62, 0.18);
+}
+
+button:active,
+.music-button:active,
+.start-button:active,
+.select-btn:active,
+.PERM AINAN-btn:active {
+    transform: translateY(0);
+}
+
+.music-button,
+.music-btn {
+    background: var(--forest);
+    color: #fff;
+}
+
+.home-btn,
+.home-button,
+.home {
+    background: var(--gold);
+    color: #47391b;
+}
+
+.back-btn,
+.back-button,
+.back {
+    background: #718078;
+    color: #fff;
+}
+
+.next-button,
+.next,
+.score-button {
+    background: var(--forest);
+    color: #fff;
+}
+
+.select-btn,
+.PERM AINAN-btn,
+.open-btn,
+.biodata-link {
+    background: var(--forest);
+    color: #fff;
+}
+
+.rendah-button,
+.feedback-button {
+    background: var(--coral);
+    color: #fff;
+}
+
+.sederhana-button {
+    background: var(--forest);
+}
+
+/* =====================================================
+   HALAMAN UTAMA - FULLSCREEN
+   ===================================================== */
+
+.home-page {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    height: 100vh;
+    height: 100svh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 90px 0 15px;
+    background:
+        radial-gradient(ellipse at 82% 13%, rgba(232, 120, 91, 0.13), transparent 24rem),
+        radial-gradient(ellipse at 12% 83%, rgba(52, 118, 95, 0.13), transparent 27rem),
+        linear-gradient(145deg, #fffaf0, #f3efdf);
+}
+
+.logo-container {
+    position: absolute;
+    top: 18px;
+    left: 3vw;
+    z-index: 20;
+}
+
+.home-page .logo {
+    width: 88px;
+    max-height: 72px;
+}
+
+.home-page .music-button {
+    position: absolute;
+    top: 20px;
+    right: 3vw;
+    z-index: 20;
+}
+
+.home-content {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    height: calc(100vh - 105px);
+    height: calc(100svh - 105px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0;
+    padding: 12px 3vw;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.adventure-image {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    min-height: 0;
+    max-height: calc(100svh - 175px);
+    flex: 1 1 auto;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 12px;
+}
+
+.start-button {
+    flex: 0 0 auto;
+    min-height: 54px;
+    padding: 14px 34px;
+    border-radius: 16px;
+    background: var(--coral);
+    box-shadow: 0 8px 18px rgba(183, 81, 60, 0.2);
+    font-size: 16px;
+    letter-spacing: 0.02em;
+}
+
+.start-button:hover {
+    background: #cf5e44;
+}
+
+/* =====================================================
+   BIODATA PENGEMBARA
+   ===================================================== */
+
+.biodata-page {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    flex-direction: column;
+    padding: 0 32px 24px;
+}
+
+.biodata-card {
+    width: min(960px, 100%);
+    margin: auto;
+    padding: clamp(32px, 5vw, 64px);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.biodata-card h1,
+.rakbuku-content h1,
+.intro-content h1,
+.heading h1,
+.book-heading h2,
+.PERM AINAN-heading h1 {
+    margin-top: 0;
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 800;
+    text-wrap: balance;
+}
+
+.biodata-card h1 {
+    margin-bottom: 14px;
+    font-size: clamp(30px, 4vw, 44px);
+}
+
+.biodata-card p {
+    max-width: 48ch;
+    margin: 0 auto 24px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.65;
+}
+
+.biodata-link,
+.biodata-card .next-button,
+.biodata-card .home-button {
+    margin: 6px;
+}
+
+/* =====================================================
+   RAK BUKU KIT BUDI
+   ===================================================== */
+
+.rakbuku-page {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    flex-direction: column;
+    padding: 0 32px 22px;
+    text-align: center;
+}
+
+.rakbuku-content {
+    width: min(1500px, 100%);
+    margin: auto;
+}
+
+.rakbuku-content h1,
+.intro-content h1 {
+    margin-bottom: 8px;
+    font-size: clamp(32px, 4vw, 48px);
+}
+
+.rakbuku-content .subtitle,
+.intro-description {
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.level-container {
+    display: grid;
+    width: min(1200px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    margin: 0 auto;
+}
+
+.level-card {
+    min-height: 290px;
+    padding: 34px 30px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--soft-shadow);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.level-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.level-icon {
+    margin-bottom: 8px;
+    font-size: 64px;
+    line-height: 1.1;
+}
+
+.level-card h2 {
+    margin: 8px 0;
+    color: var(--ink);
+    font-size: 24px;
+}
+
+.level-card p {
+    max-width: 38ch;
+    min-height: 42px;
+    margin: 0 auto 12px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.extra-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* =====================================================
+   HALAMAN INTRO
+   ===================================================== */
+
+.intro-page {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 0 32px 20px;
+    text-align: center;
+}
+
+.intro-content {
+    width: min(1500px, 100%);
+    margin: 8px auto 0;
+}
+
+.intro-content h1 {
+    margin-bottom: 6px;
+}
+
+.intro-description {
+    margin-bottom: 16px;
+}
+
+.video-container {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(36, 75, 62, 0.16);
+    border-radius: 18px;
+    background: #1d3129;
+    box-shadow: var(--shadow);
+}
+
+.intro-video {
+    display: block;
+    width: 100%;
+    height: min(62vh, 680px);
+    object-fit: contain;
+}
+
+.intro-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+/* =====================================================
+   PILIH BUKU
+   ===================================================== */
+
+.heading {
+    width: min(1700px, calc(100% - 64px));
+    margin: 4px auto 20px;
+    text-align: center;
+}
+
+.heading h1 {
+    margin-bottom: 6px;
+    font-size: clamp(30px, 3.5vw, 44px);
+}
+
+.heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.book-container {
+    display: grid;
+    width: min(1800px, calc(100% - 64px));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 22px;
+    margin: 0 auto;
+}
+
+body.book-selection-page,
+body.activity-selection-page {
+    display: flex;
+    min-height: 100vh;
+    min-height: 100svh;
+    flex-direction: column;
+}
+
+body.book-selection-page .book-container,
+body.activity-selection-page .PERMAINAN-container {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.book-card {
+    display: flex;
+    width: auto;
+    min-width: 0;
+    flex-direction: column;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: var(--soft-shadow);
+    text-align: center;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.book-cover,
+.image-error {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    max-height: 280px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f5f0e2;
+}
+
+.book-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    object-fit: contain;
+}
+
+.book-card h3 {
+    min-height: 42px;
+    margin: 10px 0 4px;
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.3;
+    text-wrap: balance;
+}
+
+.book-number {
+    margin-bottom: 10px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.book-card .select-btn {
+    width: 100%;
+    margin-top: auto;
+}
+
+.image-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    color: #9c3e32;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.back-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 16px auto 12px;
+    text-align: center;
+}
+
+/* =====================================================
+   PILIH PERMAINAN
+   ===================================================== */
+
+.PERM AINAN-container {
+    display: grid;
+    width: min(1600px, calc(100% - 64px));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 24px;
+    margin: 0 auto;
+}
+
+.PERM AINAN-card {
+    display: flex;
+    width: auto;
+    min-width: 0;
+    min-height: 400px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: var(--soft-shadow);
+    text-align: center;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.PERM AINAN-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.PERM AINAN-image {
+    display: block;
+    width: 100%;
+    height: clamp(190px, 24vh, 280px);
+    margin: 0 0 12px;
+    border-radius: 13px;
+    background: var(--leaf);
+    object-fit: cover;
+}
+
+.PERM AINAN-icon {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    margin: 30px auto 18px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #f5dfaa, #edb18e);
+    font-size: 48px;
+}
+
+.PERM AINAN-card h2 {
+    min-height: 48px;
+    margin: 0 0 14px;
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.4;
+    text-wrap: balance;
+}
+
+.PERM AINAN-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.message {
+    grid-column: 1 / -1;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fff;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* =====================================================
+   HALAMAN MEMBACA BUKU
+   ===================================================== */
+
+.book-heading {
+    padding: 6px 16px 10px;
+    text-align: center;
+}
+
+.book-heading h2 {
+    margin-bottom: 5px;
+    font-size: clamp(24px, 3vw, 34px);
+}
+
+.book-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+}
+
+.book-frame {
+    display: block;
+    width: calc(100% - 48px);
+    height: calc(100dvh - 220px);
+    min-height: 340px;
+    margin: 0 auto;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: var(--shadow);
+}
+
+.bottom-buttons,
+.bottom-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px 20px;
+}
+
+/* =====================================================
+   HALAMAN PERMAINAN
+   ===================================================== */
+
+.PERM AINAN-heading {
+    padding: 4px 16px 12px;
+    text-align: center;
+}
+
+.PERM AINAN-heading h1 {
+    margin-bottom: 5px;
+    font-size: clamp(24px, 3vw, 34px);
+}
+
+.PERM AINAN-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.PERM AINAN-frame-container {
+    width: calc(100% - 48px);
+    height: calc(100dvh - 235px);
+    min-height: 330px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: var(--soft-shadow);
+}
+
+.PERM AINAN-frame-container iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #fff;
+}
+
+.notice {
+    padding: 6px 12px 0;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* =====================================================
+   DESKTOP - SKRIN BESAR
+   ===================================================== */
+
+@media (min-width: 1200px) {
+    .home-content {
+        padding-right: 3vw;
+        padding-left: 3vw;
+    }
+
+    .biodata-card {
+        width: min(960px, calc(100% - 80px));
+    }
+
+    .level-container {
+        width: min(1200px, 100%);
+    }
+
+    .book-container {
+        width: min(1800px, calc(100% - 80px));
+    }
+
+    .PERMAINAN-container {
+        width: min(1600px, calc(100% - 80px));
+    }
+}
+
+/* =====================================================
+   LAPTOP DAN TABLET LANDSKAP
+   ===================================================== */
+
+@media (min-width: 761px) and (max-width: 1199px) {
+    .home-content {
+        padding-right: 2vw;
+        padding-left: 2vw;
+    }
+
+    .biodata-card {
+        width: min(820px, calc(100% - 48px));
+    }
+
+    .rakbuku-content,
+    .intro-content {
+        width: calc(100% - 48px);
+    }
+
+    .level-container {
+        width: min(900px, 100%);
+    }
+
+    .book-container {
+        width: calc(100% - 48px);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .PERMAINAN-container {
+        width: calc(100% - 48px);
+    }
+}
+
+/* =====================================================
+   SKRIN DESKTOP RENDAH
+   ===================================================== */
+
+@media (min-width: 761px) and (max-height: 740px) {
+    .book-container {
+        gap: 12px;
+    }
+
+    .book-card {
+        padding: 10px;
+    }
+
+    .book-cover,
+    .image-error {
+        max-height: 205px;
+    }
+
+    .book-card h3 {
+        min-height: 38px;
+        margin: 8px 0 2px;
+    }
+
+    .book-number {
+        margin-bottom: 8px;
+    }
+
+    .back-container {
+        margin-top: 10px;
+    }
+
+    .level-card {
+        min-height: 230px;
+        padding: 22px;
+    }
+}
+
+/* =====================================================
+   TABLET DAN TELEFON
+   ===================================================== */
+
+@media (max-width: 760px) {
+    body.book-selection-page,
+    body.activity-selection-page {
+        display: block;
+    }
+
+    .top-bar,
+    .rakbuku-header,
+    .intro-header,
+    .biodata-header,
+    body > header {
+        width: calc(100% - 32px);
+        min-height: 68px;
+    }
+
+    .logo,
+    .rakbuku-logo,
+    .intro-logo,
+    .biodata-logo {
+        width: 68px;
+        max-height: 56px;
+    }
+
+    .home-page {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 82px 0 14px;
+    }
+
+    .home-content {
+        width: 100%;
+        height: calc(100svh - 96px);
+        min-height: 400px;
+        padding: 10px 12px;
+    }
+
+    .adventure-image {
+        max-height: calc(100svh - 165px);
+    }
+
+    .home-page .logo-container {
+        left: 12px;
+    }
+
+    .home-page .music-button {
+        right: 12px;
+    }
+
+    .start-button {
+        width: min(90%, 360px);
+    }
+
+    .rakbuku-page,
+    .intro-page {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .rakbuku-content {
+        margin: 26px auto;
+    }
+
+    .level-container {
+        gap: 14px;
+    }
+
+    .level-card {
+        padding: 20px 14px;
+    }
+
+    .level-card p {
+        min-height: 62px;
+    }
+
+    .book-container {
+        width: calc(100% - 32px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .PERMAINAN-container {
+        width: calc(100% - 32px);
+        gap: 14px;
+    }
+
+    .PERMAINAN-card {
+        min-height: 310px;
+        padding: 12px;
+    }
+
+    .PERMAINAN-image {
+        height: 155px;
+    }
+
+    .book-frame {
+        width: calc(100% - 24px);
+        height: calc(100dvh - 230px);
+        min-height: 340px;
+    }
+
+    .PERMAINAN-frame-container {
+        width: calc(100% - 24px);
+        height: calc(100dvh - 270px);
+        min-height: 320px;
+    }
+
+    .biodata-card {
+        width: 100%;
+    }
+
+    .intro-content {
+        width: 100%;
+    }
+
+    .intro-video {
+        height: min(52vh, 480px);
+    }
+}
+
+/* =====================================================
+   TELEFON BIMBIT
+   ===================================================== */
+
+@media (max-width: 540px) {
+    .top-bar > div,
+    .rakbuku-header > div {
+        gap: 7px;
+    }
+
+    button,
+    .music-button,
+    .start-button,
+    .home-btn,
+    .music-btn,
+    .home-button,
+    .level-button,
+    .extra-button,
+    .intro-button,
+    .biodata-link,
+    .next-button,
+    .select-btn,
+    .back-btn,
+    .PERMAINAN-btn,
+    .home,
+    .back,
+    .next,
+    .open-btn {
+        min-height: 44px;
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .home-content {
+        min-height: 360px;
+    }
+
+    .adventure-image {
+        max-height: calc(100svh - 160px);
+    }
+
+    .biodata-page {
+        padding: 0 16px 18px;
+    }
+
+    .biodata-card {
+        padding: 28px 18px;
+    }
+
+    .rakbuku-page {
+        padding: 0 16px 18px;
+    }
+
+    .level-container {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 440px;
+    }
+
+    .level-card p {
+        min-height: 0;
+    }
+
+    .extra-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        width: min(100%, 440px);
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .intro-content {
+        margin-top: 14px;
+    }
+
+    .intro-video {
+        height: min(48vh, 380px);
+    }
+
+    .intro-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .book-container {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 360px;
+    }
+
+    .book-card {
+        padding: 14px;
+    }
+
+    .book-cover,
+    .image-error {
+        max-height: 220px;
+    }
+
+    .PERMAINAN-container {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 380px;
+    }
+
+    .PERMAINAN-card {
+        min-height: 320px;
+    }
+
+    .PERMAINAN-image {
+        height: 190px;
+    }
+
+    .book-heading {
+        padding-top: 6px;
+    }
+
+    .book-frame {
+        height: 65dvh;
+        min-height: 300px;
+    }
+
+    .bottom-buttons,
+    .bottom-bar {
+        flex-direction: column;
+        padding: 12px;
+    }
+
+    .bottom-buttons button,
+    .bottom-bar button,
+    .back-container .back-btn {
+        width: min(100%, 420px);
+    }
+
+    .PERMAINAN-frame-container {
+        height: 62dvh;
+        min-height: 280px;
+    }
+}
+
+/* =====================================================
+   AKSESIBILITI
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
